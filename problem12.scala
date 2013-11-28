@@ -2,9 +2,9 @@ val triangle = (n: Int) => n * ( n + 1 ) / 2
 lazy val triangles = Stream.from(1).map(triangle(_))
 
 
-lazy val prime: Stream[Int] = 2 #:: Stream.from(3, 2).filter(i => (2 to i).view.takeWhile(j => j * j <= i).forall(i % _ > 0))
+lazy val prime: Stream[Int] = 2 #:: Stream.from(3, 2).filter(i => (2 to i).takeWhile(j => j * j <= i).forall(i % _ > 0))
 
-val primes = prime.take(10000)
+val primes = prime.take(10000).toList
 
 
 
